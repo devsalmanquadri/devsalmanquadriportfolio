@@ -1,2 +1,2 @@
 **In Progress Not yet Completed**
-visit: [Portfolio Website](salmanquadri.me)
+visit: [Portfolio Website](www.salmanquadri.me)
