@@ -1,0 +1,99 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  user-select: none;
+  scroll-behavior: smooth;
+  font-family: "Andika", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+/* ++++++++++++++++++++++++ PAGE 1 +++++++++++++++++++++++++++++++++++++++ */
+.page1-about {
+  height: auto;
+  padding: 5vw 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #ffffff; */
+}
+.about-page {
+  width: 50%;
+}
+.about-page h2 {
+  font-size: 4vw;
+  margin-bottom: 2vw;
+}
+.about-page h4 {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: 1vw;
+  color: #2d2d2d;
+}
+.about-page h6 {
+  font-weight: 400;
+  color: #525252;
+  font-size: 1.3vw;
+}
+.abt-img {
+  width: 40vw;
+}
+
+/* ++++++++++++++++ PAGE 2 ++++++++++++++++++++ */
+
+.page2-about {
+  background-color: #e0e0e038;
+  backdrop-filter: blur(10px);
+  height: auto;
+  padding: 10vw 0;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+  .abt-img {
+    display: none;
+  }
+  .page1 {
+    padding: 15vw 0;
+  }
+  .page2 {
+    padding: 15vw 0;
+  }
+  .about-page {
+    width: 80vw;
+  }
+  .about-page h2 {
+    font-size: 8vw;
+    margin-bottom: 2vw;
+  }
+  .about-page h4 {
+    font-size: 6vw;
+    font-weight: 400;
+    margin-bottom: 1vw;
+    color: #2d2d2d;
+  }
+  .about-page h6 {
+    font-weight: 400;
+    color: #2e2e2e;
+    font-size: 4vw;
+    margin: 0 0 4vw 0;
+  }
+  .info-img {
+    display: none;
+  }
+  .page2 h1 {
+    font-size: 8vw;
+    /* height: vw; */
+    margin: 4vw 0;
+  }
+  .info {
+    font-size: 4vw;
+    line-height: 6vw;
+  }
+  .copyright {
+    font-size: 4vw;
+  }
+}
