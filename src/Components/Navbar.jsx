@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Styles/Navbar.css";
 // import logo from "../assets/images/logo.png";
@@ -7,71 +7,68 @@ import "../Styles/Navbar.css";
 const Navbar = () => {
   const navigateto = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
+  const navItemsRef = useRef(null);
+
+  // Function to toggle hamburger menu
   const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
+    const navItems = navItemsRef.current;
     if (isChecked) {
-      setIsChecked(false);
+      navItems.classList.remove("show1");
     } else {
-      setIsChecked(true);
+      navItems.classList.add("show1");
     }
   };
 
-  // eslint-disable-next-line no-unused-vars
-  const [scrollY, setScrollY] = useState(0);
+  // Function to handle navigation item click (on mobile)
+  const handleNavItemClick = () => {
+    setIsChecked(!isChecked);
+    const navItems = navItemsRef.current;
+    navItems.classList.remove("show1");
+  };
+
+  // useEffect to handle scroll behavior and sticky navbar
   useEffect(() => {
     let previousScrollPosition = 0;
-    let currentScrollPosition = 0;
 
-    window.addEventListener("scroll", function () {
-      // Get the new Value
-      currentScrollPosition = window.pageYOffset;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-      //Subtract the two and conclude
-      if (previousScrollPosition - currentScrollPosition < 0) {
+      if (previousScrollPosition < currentScrollY) {
         document.querySelector(".navbar").classList.add("hide");
-      } else if (previousScrollPosition - currentScrollPosition > 0) {
+      } else {
         document.querySelector(".navbar").classList.remove("hide");
       }
 
-      // Update the previous value
-      previousScrollPosition = currentScrollPosition;
-    });
-    const handleScroll = () => {
-      // Get current scroll position
-      const currentScrollY = window.scrollY;
-
-      // Check scroll position and add/remove classes accordingly
       if (currentScrollY > 20) {
         document.querySelector(".navbar").classList.add("sticky1");
       } else {
         document.querySelector(".navbar").classList.remove("sticky1");
       }
-      // Update scrollY state
-      setScrollY(currentScrollY);
+
+      previousScrollPosition = currentScrollY;
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="z-50 navbar">
         <div onClick={() => navigateto("/")} className="logo">
           {/* <img src={logo} alt="SQ" /> */}S<span>Q</span>
         </div>
-        <input id="active1" type="checkbox" />
-        <label htmlFor="active1" className="hamburger" onClick={toggleCheckbox}>
-          <input
-            id="in1"
-            type="checkbox"
-            checked={isChecked}
-            onChange={toggleCheckbox}
-          />
+        <input id="active1" type="checkbox" className="hidden" />
+        <label
+          htmlFor="active1"
+          className="cursor-pointer hamburger"
+          onClick={toggleCheckbox}
+        >
+          <input id="in1" type="checkbox" checked={isChecked} />
           <svg viewBox="0 0 32 32">
             <path
               className="line line-top-bottom"
@@ -80,21 +77,51 @@ const Navbar = () => {
             <path className="line" d="M7 16 27 16"></path>
           </svg>
         </label>
-        <ul className="navitems">
-          <li className="active">
-            <Link to="/">Home</Link>
+        <ul className="navitems" ref={navItemsRef}>
+          <li>
+            <Link
+              onClick={handleNavItemClick}
+              to="/"
+              className="hover:text-green-400"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/Projects">Projects</Link>
+            <Link
+              onClick={handleNavItemClick}
+              to="/Projects"
+              className="hover:text-green-400"
+            >
+              Projects
+            </Link>
           </li>
           <li>
-            <Link to="/skills">Skills</Link>
+            <Link
+              onClick={handleNavItemClick}
+              to="/Skills"
+              className="hover:text-green-400"
+            >
+              Skills
+            </Link>
           </li>
           <li>
-            <Link to="/About">About</Link>
+            <Link
+              onClick={handleNavItemClick}
+              to="/About"
+              className="hover:text-green-400"
+            >
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/Contact">Contact</Link>
+            <Link
+              onClick={handleNavItemClick}
+              to="/Contact"
+              className="hover:text-green-400"
+            >
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>

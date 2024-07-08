@@ -104,43 +104,49 @@ const Skills = () => {
 
   return (
     <>
-      <div className="bg-home">
-        <img src={bg_skill} alt="mountain" />
-      </div>
-      <div className="relative flex items-center justify-center w-full h-full py-20 backdrop-blur-2xl">
-        <div className="relative w-11/12 object-cover flex flex-col items-center justify-center h-80% py-10 backdrop-blur-sm rounded-[4rem] bg-white/20">
-          <div className="absolute top-0 object-center w-full h-full -z-10 object-conver bg-skill">
+      <div className="relative flex flex-col items-center justify-center min-h-screen pt-20 text-white bg-gradient-to-br from-gray-900 to-gray-700">
+        <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+          <img
+            src={bg_skill}
+            alt="mountain"
+            className="object-cover w-full h-full opacity-30"
+          />
+        </div>
+
+        <div className="relative z-10 w-11/12 max-w-6xl p-10 border shadow-lg bg-white/10 backdrop-blur-lg rounded-3xl border-gray-400/20">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl -z-10">
             <img
-              className="w-full h-full rounded-[4rem]"
               src={bg_skills}
-              alt="greenry"
+              alt="greenery"
+              className="object-cover w-full h-full"
             />
           </div>
-          <h2 className="mx-5 text-3xl font-medium text-center border-b-4 border-green-600 font-ubuntu text-zinc-100 sm:text-2xl">
+
+          <h2 className="mb-10 text-4xl font-bold text-center text-white md:text-5xl">
             My Skills
           </h2>
-          <br />
-          <div className="flex flex-wrap gap-4">
+
+          <div className="flex flex-wrap justify-center gap-6">
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="flex flex-grow p-6 transition-transform duration-500 transform bg-white shadow-lg basis-auto bg-opacity-30 backdrop-blur-md rounded-2xl card"
-                data-aos="flip-up"
+                className="flex flex-col items-center p-6 transition-all transform shadow-md w-80 bg-white/10 backdrop-blur-md rounded-2xl hover:scale-105 hover:shadow-xl"
+                data-aos="fade"
               >
                 <img
                   src={skill.imgSrc}
-                  className="w-20 h-20 mb-4"
+                  className="w-20 h-20 mb-4 rounded-lg"
                   alt={`${skill.title} icon`}
                 />
-                <div className="text-center card__content">
-                  <p className="mb-2 text-2xl font-semibold text-gray-800">
+                <div className="text-center">
+                  <p className="mb-2 text-xl font-semibold text-white">
                     {skill.title}
                   </p>
-                  <p className="mb-6 text-sm text-gray-700 card__description">
+                  <p className="mb-4 text-sm text-gray-300">
                     {skill.description}
                   </p>
                   <a href="./Skills/skills.html">
-                    <button className="px-6 py-2 text-sm font-medium text-white transition duration-300 transform bg-blue-500 rounded-full shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 hover:scale-105">
+                    <button className="px-4 py-2 text-white transition duration-300 bg-blue-600 rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                       More...
                     </button>
                   </a>

@@ -88,19 +88,7 @@ a {
   justify-content: center;
   align-items: center;
 }
-.nav1 {
-  padding: 0 2vw;
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 2rem;
-  height: 4rem;
-  /* background-color: rgba(255, 119, 119, 0.376); */
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  margin-top: 1vw;
-}
+
 .navbar {
   padding: 0 15vw;
   position: fixed;
@@ -135,7 +123,7 @@ a {
 }
 .navitems {
   width: 50%;
-  font-size: 1.5vw;
+  font-size: 1.8rem;
   font-weight: 500;
   display: flex;
   justify-content: space-between;
@@ -151,7 +139,7 @@ a {
   text-decoration: none;
   color: #f8f9fd;
   font-weight: 600;
-  padding: 0.6vw;
+  padding: 0 0.6vw;
   transition: all 0.3s;
 
   /* border-radius: 2rem; */
@@ -189,7 +177,7 @@ a {
 .logo {
   font-family: "Andika", sans-serif;
   color: #fff;
-  font-size: 2.7vw;
+  font-size: 3.24rem;
   font-weight: 700;
   /* margin-left: 2vw; */
   > span {
@@ -219,7 +207,7 @@ a {
 
 .line {
   fill: none;
-  stroke: rgb(0, 0, 0);
+  stroke: rgb(255, 255, 255);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
@@ -241,38 +229,51 @@ a {
   stroke-dashoffset: -32.42;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1300px) {
+  .navbar {
+    padding: 0 2vw;
+  }
   .navitems {
+    width: 50%;
+    /* gap: 10vw; */
+  }
+}
+@media screen and (max-width: 900px) {
+  /* Styles/Navbar.css */
+
+  .navitems {
+    display: flex;
     position: fixed;
     top: 0;
-    left: -500px;
-    /* color: black; */
-    transition: all 0.1s ease-in;
-    > li a {
-      color: black;
-    }
-  }
-
-  #active1:checked ~ .navitems {
-    display: flex;
-    font-size: 30px;
-    height: 100vh;
-    /* line-height: -5vw; */
-    letter-spacing: 1vw;
-    align-items: center;
-    position: fixed;
-    top: 0.1vw;
-    left: -0%;
-    color: #000;
-    background-color: #f8f9fd;
-    background: #ef5d60;
-
-    text-align: center;
+    left: -100%;
+    transition: all 0.3s ease-in-out;
     flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #152674;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     z-index: 1;
-    padding: 50%;
-    margin: 0px;
+    gap: 14vw;
   }
+
+  .navitems.show1 {
+    left: 0;
+  }
+
+  .navitems li a {
+    color: #f9f9f9;
+    font-size: 30px;
+    letter-spacing: 1vw;
+    /* margin: 20px 0; */
+  }
+
+  .hamburger {
+    cursor: pointer;
+    z-index: 2;
+  }
+
   #active1:checked ~ .hamburger {
     position: fixed;
     right: 0;

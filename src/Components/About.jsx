@@ -22,7 +22,7 @@ const AboutPage = () => {
       <div className="md:opacity-0 bg-home">
         <img src={bg_abt} alt="mountain" />
       </div>
-      <div className="z-50 md:opacity-0 bg-home">
+      <div className="z-40 md:opacity-0 bg-home">
         <img src={bg_abt1} alt="mountain" />
       </div>
       <div className="min-h-screen overflow-x-hidden md:pt-10 md:bg-zinc-200 page1-about">
@@ -150,11 +150,6 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <footer className=" sticky bottom-0 z-[60]">
-        <p className="copyright">
-          Made with <span>❤</span> by Salman Quadri.
-        </p>
-      </footer>
     </>
   );
 };

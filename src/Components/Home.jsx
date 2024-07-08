@@ -192,7 +192,6 @@ const Home = () => {
             <p>Hello, my name is</p>
             <h1>Salman Quadri</h1> I am <span id="element"></span>
           </div>
-
           <div className="social-media-icons">
             <button
               className="Btn1"
@@ -333,10 +332,10 @@ const Home = () => {
               new ways to enhance my skill set. Let’s connect and create
               something amazing together!
             </p>
+            <Link className="btn-link" to="/about">
+              <button className="type1">More About Me</button>
+            </Link>
           </div>
-          <Link className="btn-link" to="/about">
-            <button className="type1">More About Me</button>
-          </Link>
         </div>
       </div>
       <div className="page3-home">
@@ -476,15 +475,6 @@ const Home = () => {
           </div>
         </section>
       </div>
-      <footer>
-        <p className="copyright">
-          Made with{" "}
-          <span role="img" aria-label="heart">
-            ❤
-          </span>{" "}
-          by Salman Quadri.
-        </p>
-      </footer>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const projects = [
     title: "Multi Page Portfolio",
     description:
       "A comprehensive multi-page portfolio demonstrating advanced frontend development techniques.",
-    iframeSrc: "https://devsalmanquadri.github.io/Multiport/", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/Multiport/",
     github: "https://github.com/devsalmanquadri/Multiport",
     details:
       "This project includes multiple pages and advanced UI/UX features, highlighting my skills in responsive design and frontend development.",
@@ -16,7 +16,7 @@ const projects = [
     title: "Amazon Clone",
     description:
       "A clone of the Amazon website, focusing on replicating its home page.",
-    iframeSrc: "https://devsalmanquadri.github.io/amazonclo/", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/amazonclo/",
     github: "https://github.com/devsalmanquadri/amazonclo",
     details:
       "This project showcases my ability to mimic website designs and using the fundamentals of html and css.",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Login System",
     description: "A basic login form",
-    iframeSrc: "https://devsalmanquadri.github.io/login/", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/login/",
     github: "https://github.com/devsalmanquadri/login",
     details:
       "This project demonstrates my proficiency in frontend development and implementing Login system.",
@@ -33,17 +33,16 @@ const projects = [
     title: "Portfolio 1",
     description:
       "My first portfolio project, showcasing foundational HTML and CSS skills.",
-    iframeSrc: "https://devsalmanquadri.github.io/Portfolio1", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/Portfolio1",
     github: "https://github.com/devsalmanquadri/Portfolio1",
     details:
       "This project was my initial exploration into web development, focusing on creating a visually appealing portfolio using basic web technologies.",
   },
-
   {
     title: "Portfolio 2",
     description:
       "An updated version of my personal portfolio, featuring enhanced design and functionality.",
-    iframeSrc: "https://devsalmanquadri.github.io/portfolio2/", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/portfolio2/",
     github: "https://github.com/devsalmanquadri/portfolio2",
     details:
       "This project represents my growth as a developer, incorporating new technologies and design principles to create a more polished and modern portfolio.",
@@ -52,7 +51,7 @@ const projects = [
     title: "To-Do App",
     description:
       "A simple to-do list application with task management capabilities.",
-    iframeSrc: "https://devsalmanquadri.github.io/todo/", // Replace with your iframe URL
+    iframeSrc: "https://devsalmanquadri.github.io/todo/",
     github: "https://github.com/devsalmanquadri/todo",
     details:
       "This project demonstrates my proficiency in frontend development by creating an intuitive and responsive task management application using html and css.",
@@ -63,32 +62,37 @@ const Projects = () => {
   const [modalProject, setModalProject] = useState(null);
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-10 pt-24 bg-gradient-to-br from-purple-800 via-indigo-800 to-blue-800">
-      <h2 className="mx-5 mb-10 text-3xl font-medium text-center border-b-4 border-green-600 font-ubuntu text-zinc-100 sm:text-2xl">
-        My Projects
+    <div className="relative flex flex-col items-center min-h-screen py-20 text-white sm:py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      {/* Title */}
+      <h2 className="relative mb-10 text-4xl font-bold text-center text-white md:text-5xl">
+        <span className="inline-block">
+          <span className="block pb-3 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+            My Projects
+          </span>
+          <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-green-400 to-blue-500"></span>
+        </span>
       </h2>
-      <div className="grid w-full grid-cols-2 xl:grid-cols-1 gap-10 max-w-[80%]">
+
+      <div className="grid grid-cols-1 gap-8 px-4 md:px-12 lg:px-24 max-w-7xl">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="relative flex-row p-6 transition-transform duration-500 transform shadow-2xl cursor-pointer group bg-white/10 backdrop-blur-md rounded-3xl hover:scale-105 hover:shadow-2xl"
+            className="relative overflow-hidden transition-transform duration-300 transform bg-gray-800 shadow-lg cursor-pointer group rounded-xl hover:shadow-2xl"
             onClick={() => setModalProject(project)}
           >
-            <div className="relative overflow-hidden rounded-2xl aspect-w-16 aspect-h-9">
+            <div className="relative overflow-hidden h-60 sm:h-80">
               <iframe
                 src={project.iframeSrc}
                 title={project.title}
-                className="absolute inset-0 w-full h-full transition-opacity duration-300 rounded-2xl group-hover:opacity-80"
+                className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-75 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 rounded-2xl"></div>
+              <div className="absolute inset-0 opacity-50 bg-gradient-to-t from-black to-transparent"></div>
             </div>
-            <div className="mt-6">
-              <h3 className="text-2xl font-bold text-white transition-colors duration-300 group-hover:text-indigo-400">
+            <div className="p-4">
+              <h3 className="text-2xl font-semibold text-white">
                 {project.title}
               </h3>
-              <p className="mt-2 text-sm text-gray-300 line-clamp-3">
-                {project.description}
-              </p>
+              <p className="mt-2 text-gray-300">{project.description}</p>
               <div className="flex items-center mt-4 space-x-4">
                 <a
                   href={project.iframeSrc}
@@ -114,28 +118,30 @@ const Projects = () => {
         ))}
       </div>
 
+      {/* Modal */}
       {modalProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300 bg-black bg-opacity-60">
-          <div className="relative w-full p-8 transition-all duration-300 shadow-xl max-w-[80%] md:max-w-full bg-white/20 backdrop-blur-2xl rounded-3xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-auto bg-black bg-opacity-75">
+          <div className="relative w-full max-w-4xl p-4 bg-gray-900 shadow-2xl rounded-xl md:p-6 md:max-w-6xl">
             <button
-              className="absolute text-white top-4 right-4 hover:text-indigo-200"
+              className="absolute z-40 p-2 text-red-600 bg-black top-4 right-4 hover:text-gray-200 focus:outline-none"
               onClick={() => setModalProject(null)}
             >
               <FaTimes size={24} />
             </button>
-            <div className="relative mb-2 overflow-hidden rounded-2xl aspect-w-16">
+            <div className="relative overflow-hidden h-[60vh] rounded-lg">
               <iframe
                 src={modalProject.iframeSrc}
                 title={modalProject.title}
-                className="absolute inset-0 object-cover w-full h-[70%] rounded-2xl"
-                tabIndex={-1} // Ensure modal is focusable
+                className="absolute inset-0 w-full h-full rounded-lg"
               />
             </div>
-            <h2 className="mb-2 text-3xl font-bold text-white">
+            <h2 className="mt-6 text-2xl font-bold md:text-3xl">
               {modalProject.title}
             </h2>
-            <p className="text-sm text-gray-300">{modalProject.details}</p>
-            <div className="flex items-center mt-6 space-x-6">
+            <p className="mt-2 text-gray-400 md:text-lg">
+              {modalProject.details}
+            </p>
+            <div className="flex items-center mt-6 space-x-4">
               <a
                 href={modalProject.iframeSrc}
                 target="_blank"
