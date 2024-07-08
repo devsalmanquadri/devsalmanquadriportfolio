@@ -66,7 +66,7 @@ body {
   background-color: transparent;
   border: 2px solid #252525;
   border-radius: 30px;
-  color: #333;
+  /* color: #3; */
   cursor: pointer;
   height: 3vw;
   position: relative;
@@ -76,7 +76,7 @@ body {
 .about button:hover,
 .page3-home button:hover {
   border: none;
-  box-shadow: 1px 1px 200px #252525;
+  /* box-shadow: 1px 1px 200px #252525; */
   color: #fff;
   transform: translatey(5%);
 }
@@ -112,86 +112,7 @@ body {
   padding: 2vw 0;
   overflow-x: hidden;
 }
-.btn-txt,
-.btn1-txt {
-  color: #000;
-  font-size: 1vw;
-  font-weight: 800;
-  letter-spacing: 4px;
-  z-index: 1;
-}
-.btn-txt:hover {
-  color: #fff;
-  padding: 5px;
-}
-.btn1-txt:hover {
-  color: #fff;
-}
-.card {
-  aspect-ratio: 16/9;
-  background: linear-gradient(to left top, #51dd10 0%, #fff 100%),
-    linear-gradient(#000, #000);
-  border-radius: 10px;
-  box-shadow: 0 0 0 5px #e0e0e0;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  position: relative;
-  width: 350px;
-  margin: 1vw;
-}
 
-.card,
-.card__content {
-  transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.card:hover {
-  box-shadow: 0 1vw 1.6vw #6b6b6b33;
-  transform: scale(1.05);
-}
-.card:hover .card__content {
-  transform: rotateX(0);
-}
-
-.card__content {
-  background-color: #f4f4f4;
-  color: #000;
-  height: 100%;
-  left: 0;
-  padding: 20px;
-  position: absolute;
-  top: 0;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  width: 100%;
-  overflow-y: scroll;
-}
-.card__description {
-  color: #353535;
-  font-size: 0.7vw;
-  line-height: 1.4;
-  margin: 1vw 0;
-}
-.card__title {
-  color: #000;
-  font-size: 1.1vw;
-  font-weight: 700;
-  margin: 0;
-}
-
-.copyright {
-  color: #50c878;
-  font-size: 1vw;
-  background-color: #f0f0f0;
-}
-.copyright span {
-  color: red;
-}
-.copyright,
-.heading,
-.page3 {
-  text-align: center;
-}
 .form {
   align-items: center;
   display: flex;
@@ -307,7 +228,7 @@ body {
 }
 
 .form-group label {
-  color: #191919;
+  color: #f8f8f8c0;
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -321,7 +242,7 @@ body {
 
 .form-group input {
   border: 1px solid black;
-  box-shadow: 0px 10px 5px -5px rgba(52, 52, 52, 0.946);
+  box-shadow: 0px 2px 2px 1px rgba(52, 52, 52, 0.946);
   font-size: 1.3rem;
   transition: box-shadow 0.3s, transform 0.3s;
   width: 100%;
@@ -361,7 +282,7 @@ body {
   background-color: #1a202c; /* Adjusted background color with opacity */
   border: none;
   border-radius: 1rem;
-  box-shadow: 0 10px 20px rgba(16, 137, 211, 0.3); /* Adjusted box-shadow for glassmorphism effect */
+  /* box-shadow: 0 10px 20px rgba(16, 137, 211, 0.3); Adjusted box-shadow for glassmorphism effect */
   transition: all 0.3s ease-in-out;
 }
 
@@ -372,13 +293,13 @@ body {
 
 .button-home:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(16, 137, 211, 0.5); /* Focus outline with opacity */
+  /* box-shadow: 0 0 0 3px rgba(16, 137, 211, 0.5); Focus outline with opacity */
 }
 
 .page2,
 .page3-home,
 .page4-home {
-  background-color: #fffefe74;
+  background-color: #49494974;
   backdrop-filter: blur(5px);
   padding: 2rem;
 }
@@ -629,7 +550,7 @@ body {
   background: crimson;
   border: 1px solid transparent;
   border-radius: 10px;
-  box-shadow: 6px 6px 10px -1px #00000026, -6px -6px 10px -1px #ffffffb3;
+  /* box-shadow: 6px 6px 10px -1px #00000026, -6px -6px 10px -1px #ffffffb3; */
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
@@ -651,7 +572,7 @@ body {
 .btn-link {
   display: block;
   text-decoration: none;
-  color: black;
+  color: #fff;
   transition: color 0.3s;
   z-index: 999; /* Ensure it's above the pseudo-element */
 }

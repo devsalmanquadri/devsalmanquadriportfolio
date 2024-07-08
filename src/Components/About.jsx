@@ -22,17 +22,17 @@ const AboutPage = () => {
       <div className="md:opacity-0 bg-home">
         <img src={bg_abt} alt="mountain" />
       </div>
-      <div className="z-40 md:opacity-0 bg-home">
+      <div className="z-10 md:opacity-0 bg-home">
         <img src={bg_abt1} alt="mountain" />
       </div>
-      <div className="min-h-screen overflow-x-hidden md:pt-10 md:bg-zinc-200 page1-about">
+      <div className="min-h-screen overflow-x-hidden md:pt-10 bg-gray-800/20 md:bg-zinc-200 page1-about">
         <div className="w-1/2 md:hidden right" data-aos="slide-right"></div>
 
         <div
-          className="w-auto h-auto max-w-3xl overflow-hidden transition-all duration-500 transform bg-white shadow-xl md:w-11/12 rounded-2xl hover:scale-105"
+          className="w-auto h-auto max-w-3xl overflow-hidden transition-all duration-500 transform shadow-xl bg-gray-800/90 md:w-11/12 rounded-2xl hover:scale-105"
           data-aos="slide-left"
         >
-          <div className="p-6 text-black bg-crimson md:p-8">
+          <div className="p-6 text-white bg-crimson md:p-8">
             <h2
               className="mb-2 text-4xl font-bold "
               data-aos="fade-right"
@@ -42,7 +42,7 @@ const AboutPage = () => {
               About Me
             </h2>
             <h4
-              className="text-xl font-medium text-black opacity-75 md:text-2xl"
+              className="text-xl font-medium text-white opacity-75 md:text-2xl"
               data-aos="fade-right"
               data-aos-delay="300"
               data-aos-duration="300"
@@ -51,17 +51,17 @@ const AboutPage = () => {
             </h4>
           </div>
           <div
-            className="p-6 md:p-8 bg-gray-50"
+            className="p-6 md:p-8 bg-gray-800/90"
             data-aos="fade-right"
             data-aos-delay="300"
             data-aos-duration="300"
           >
-            <p className="mb-6 text-gray-800">
+            <p className="mb-6 text-white">
               Hello, I&apos;m Salman Quadri, a passionate front-end programmer
               and designer. Here&apos;s a brief overview of my background and
               aspirations:
             </p>
-            <ul className="pl-5 space-y-4 text-gray-700 list-disc">
+            <ul className="pl-5 space-y-4 text-white list-disc">
               <li>
                 <strong className="text-crimson">Current Education:</strong>{" "}
                 Pursuing a Bachelor of Computer Application (BCA) degree at
@@ -93,10 +93,10 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-around min-h-screen p-8 overflow-x-hidden sm:w-full md:bg-zinc-200 page2-about md:p-4">
+      <div className="flex items-center justify-around min-h-screen p-8 overflow-x-hidden sm:w-full bg-gray-800/30 page2-about md:p-4">
         <div className="md:hidden"></div>
         <div
-          className="w-auto max-w-3xl p-6 overflow-hidden transition-transform duration-500 transform border shadow-lg md:w-full sm:w-full md:p-8 backdrop-filter backdrop-blur-lg bg-white/70 border-white/50 rounded-2xl hover:scale-105"
+          className="w-auto max-w-3xl p-6 overflow-hidden transition-transform duration-500 transform border shadow-lg md:w-full sm:w-full md:p-8 backdrop-filter backdrop-blur-lg bg-gray-800/90 border-white/50 rounded-2xl hover:scale-105"
           data-aos="slide-left"
         >
           <h1 className="mb-6 text-4xl font-bold text-crimson md:text-4xl">
@@ -104,32 +104,32 @@ const AboutPage = () => {
           </h1>
           <div className="space-y-4">
             <h4
-              className="text-xl font-medium text-gray-800 md:text-2xl"
+              className="text-xl font-medium text-white md:text-2xl"
               data-aos="fade-in"
             >
               <span className="text-crimson">Name:</span> Salman Quadri
             </h4>
             <h4
-              className="text-xl font-medium text-gray-800 md:text-2xl"
+              className="text-xl font-medium text-white md:text-2xl"
               data-aos="fade-in"
             >
               <span className="text-crimson">Date of birth:</span> November 04,
               2004
             </h4>
             <h4
-              className="text-xl font-medium text-gray-800 md:text-2xl"
+              className="text-xl font-medium text-white md:text-2xl"
               data-aos="fade-in"
             >
               <span className="text-crimson">Address:</span> Bikaner, Rajasthan
             </h4>
             <h4
-              className="text-xl font-medium text-gray-800 md:text-2xl"
+              className="text-xl font-medium text-white md:text-2xl"
               data-aos="fade-in"
             >
               <span className="text-crimson">Pin Code:</span> 334001
             </h4>
             <h4
-              className="text-xl font-medium text-gray-800 md:text-2xl"
+              className="text-xl font-medium text-white md:text-2xl"
               data-aos="fade-in"
             >
               <span className="text-crimson">Email:</span>

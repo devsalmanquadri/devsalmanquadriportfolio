@@ -144,7 +144,12 @@ const ContactPage = () => {
           </button>
         </form>
       </div>
-      <h2 className="mx-10 font-semibold text-blue-500 lg:my-4">OR</h2>
+      <h2
+        data-aos="fade-up"
+        className="mx-10 font-semibold text-blue-500 lg:my-4"
+      >
+        OR
+      </h2>
       <div>
         <div
           data-aos="fade-up"
