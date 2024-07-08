@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../Styles/Navbar.css";
 // import logo from "../assets/images/logo.png";
 
@@ -79,49 +79,59 @@ const Navbar = () => {
         </label>
         <ul className="navitems" ref={navItemsRef}>
           <li>
-            <Link
-              onClick={handleNavItemClick}
+            <NavLink
+              onClick={({ isActive, isPending }) => {
+                handleNavItemClick();
+                isPending ? "pending" : isActive ? "active" : "";
+              }}
               to="/"
-              className="hover:text-green-400"
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              onClick={handleNavItemClick}
+            <NavLink
+              onClick={({ isActive, isPending }) => {
+                handleNavItemClick();
+                isPending ? "pending" : isActive ? "active" : "";
+              }}
               to="/Projects"
-              className="hover:text-green-400"
             >
               Projects
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              onClick={handleNavItemClick}
+            <NavLink
+              onClick={({ isActive, isPending }) => {
+                handleNavItemClick();
+                isPending ? "pending" : isActive ? "active" : "";
+              }}
               to="/Skills"
-              className="hover:text-green-400"
             >
               Skills
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              onClick={handleNavItemClick}
+            <NavLink
+              onClick={({ isActive, isPending }) => {
+                handleNavItemClick();
+                isPending ? "pending" : isActive ? "active" : "";
+              }}
               to="/About"
-              className="hover:text-green-400"
             >
               About
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              onClick={handleNavItemClick}
+            <NavLink
+              onClick={({ isActive, isPending }) => {
+                handleNavItemClick();
+                isPending ? "pending" : isActive ? "active" : "";
+              }}
               to="/Contact"
-              className="hover:text-green-400"
             >
               Contact
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
