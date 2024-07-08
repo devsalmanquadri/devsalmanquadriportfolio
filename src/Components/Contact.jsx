@@ -24,7 +24,7 @@ const ContactPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let errors = {};
 
@@ -47,9 +47,25 @@ const ContactPage = () => {
       return;
     }
 
-    // Form submission logic goes here (e.g., API call)
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycby8rKRJR0ALHqzPeSBp5TVdAV6SnDMsRAorxB8P9Fe3Jfryn6R5iVdO7802FKvpqN_U/exec";
 
-    // Reset form after submission (optional)
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      });
+
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        setFormData({ name: "", email: "", desc: "" });
+      } else {
+        alert("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Form submission failed.");
+    }
     setFormData({
       name: "",
       email: "",

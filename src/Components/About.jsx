@@ -22,7 +22,7 @@ const AboutPage = () => {
       <div className="md:opacity-0 bg-home">
         <img src={bg_abt} alt="mountain" />
       </div>
-      <div className="z-10 md:opacity-0 bg-home">
+      <div className="z-10  md:opacity-0 bg-home">
         <img src={bg_abt1} alt="mountain" />
       </div>
       <div className="min-h-screen overflow-x-hidden md:pt-10 bg-gray-800/20 md:bg-zinc-200 page1-about">

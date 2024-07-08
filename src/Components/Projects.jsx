@@ -4,6 +4,15 @@ import { FaExternalLinkAlt, FaGithub, FaTimes } from "react-icons/fa";
 
 const projects = [
   {
+    title: "My Music Website",
+    description:
+      "A modern music player website showcasing responsive design and interactive features.",
+    iframeSrc: "https://devsalmanquadri.github.io/musicwebsite/",
+    github: "https://github.com/devsalmanquadri/musicwebsite",
+    details:
+      "This project features a sleek music player interface with dynamic playlist management, play/pause functionality, volume control, and song progress tracking. It demonstrates proficiency in frontend development, emphasizing responsive design and user experience.",
+  },
+  {
     title: "Multi Page Portfolio",
     description:
       "A comprehensive multi-page portfolio demonstrating advanced frontend development techniques.",

@@ -739,7 +739,7 @@ body {
   .about button:hover {
     /* background-color: #00abf0; */
     border: 2px solid #000;
-    color: #000;
+    /* color: #000; */
     transform: translatey(0);
   }
   .about h2 {
@@ -747,7 +747,7 @@ body {
     margin: 5vw 0;
   }
   .about p {
-    color: #353535;
+    /* color: #353535; */
     font-size: 4vw;
     width: 80vw;
   }
@@ -800,11 +800,11 @@ body {
   }
 
   .type1::after {
-    background-color: #fff;
+    /* background-color: #fff; */
     transition: none;
   }
   .type2::after {
-    background-color: #e0e0e0;
+    /* background-color: #e0e0e0; */
     transition: none;
   }
 }
