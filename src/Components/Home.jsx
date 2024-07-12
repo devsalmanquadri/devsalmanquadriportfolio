@@ -142,18 +142,77 @@ const Home = () => {
       typed.destroy(); // Cleanup on unmount
     };
   });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    let errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Email is invalid";
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     const scriptURL =
       "https://script.google.com/macros/s/AKfycby8rKRJR0ALHqzPeSBp5TVdAV6SnDMsRAorxB8P9Fe3Jfryn6R5iVdO7802FKvpqN_U/exec";
 
-    fetch(scriptURL, { method: "POST", body: new FormData(formRef.current) })
-      .then((response) => {
-        alert("Thank you! your form is submitted successfully.");
-        window.location.reload();
-      })
-      .catch((error) => console.error("Error!", error.message));
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      });
+
+      if (response.ok) {
+        alert("Form submitted successfully!");
+        setFormData({ name: "", email: "", desc: "" });
+      } else {
+        alert("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Form submission failed.");
+    }
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+    setFormErrors({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -429,6 +488,8 @@ const Home = () => {
                   name="name"
                   id="name"
                   placeholder=" "
+                  value={formData.name}
+                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
                 />
@@ -444,6 +505,8 @@ const Home = () => {
                   type="email"
                   name="email"
                   id="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder=" "
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
@@ -460,10 +523,13 @@ const Home = () => {
                   name="message"
                   id="message"
                   placeholder=" "
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
                   rows="4"
                 />
+
                 <label
                   htmlFor="message"
                   className="absolute text-sm text-white transition-all duration-300 left-4 top-2"
