@@ -182,6 +182,7 @@ const ContactPage = () => {
               <a
                 href="mailto:secretofsk@gmail.com"
                 target="_blank"
+                rel='noreferrer'
                 className="block ml-2 text-lg font-medium text-gray-100 hover:underline"
               >
                 secretofsk@gmail.com
@@ -194,6 +195,7 @@ const ContactPage = () => {
               <a
                 href="tel:+917062747786"
                 target="_blank"
+                rel='noreferrer'
                 className="block ml-2 text-lg font-medium text-gray-100 hover:underline"
               >
                 +91 7062747786
