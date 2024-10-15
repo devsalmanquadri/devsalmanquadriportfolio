@@ -33,6 +33,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   gsap.registerPlugin(ScrollTrigger);
+
   const percentageofskill = [
     "90%",
     "90%",
@@ -47,6 +48,7 @@ const Home = () => {
     "70%",
     "80%",
   ];
+
   const lang_icon = [
     lang_icon1,
     lang_icon2,
@@ -61,6 +63,7 @@ const Home = () => {
     lang_icon11,
     lang_icon12,
   ];
+
   const lang_names = [
     "Python",
     "C",
@@ -75,9 +78,11 @@ const Home = () => {
     "MySQL",
     "PHP",
   ];
+
   const formRef = useRef(null);
   const img1Ref = useRef(null);
   const skillsContainerRef = useRef(null);
+
   useEffect(() => {
     AOS.init({
       duration: 400,
@@ -100,39 +105,47 @@ const Home = () => {
       yoyo: true,
       ease: "none",
     });
+
+    // Adjusting the query selector for progress bars and percentage elements
     const progressBars =
-      skillsContainerRef.current.querySelectorAll(".progress-bar");
+      skillsContainerRef.current.querySelectorAll(".progress-bar"); // Update if necessary
     const percentageElements =
-      skillsContainerRef.current.querySelectorAll(".skill-percentage");
-    progressBars.forEach((element) => {
-      ScrollTrigger.create({
-        trigger: element,
-        start: "top bottom", // Start animation when the top of the element is at the bottom of the viewport
-        end: "bottom top", // End animation when the bottom of the element is at the top of the viewport
-        animation: gsap.to(element, {
-          width: element.getAttribute("data-progress"), // Use the data-progress attribute
-          duration: 1,
-          delay: 0.4,
-          ease: "none",
-        }),
-        toggleActions: "play none none none", // Control actions on scroll events
+      skillsContainerRef.current.querySelectorAll(".skill-percentage"); // Ensure this class matches your HTML
+
+    progressBars.forEach((element, index) => {
+      // Set the width using the percentageofskill array
+      element.style.width = "0%"; // Initialize width to 0% for animation
+
+      // Animate the width to the final percentage
+      gsap.to(element, {
+        width: percentageofskill[index], // Set final width from percentageofskill
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: element,
+          start: "top bottom", // Start animation when the top of the element is at the bottom of the viewport
+          end: "bottom top", // End animation when the bottom of the element is at the top of the viewport
+          toggleActions: "play none none none", // Control actions on scroll events
+        },
       });
-    });
-    percentageElements.forEach((element, index) => {
+
+      // Animate the inner text for percentage
+      const percentageElement = element
+        .closest(".skill-card")
+        .querySelector(".skill-percentage"); // Get the corresponding percentage element
       gsap.fromTo(
-        element,
-        { innerText: 0 },
+        percentageElement,
+        { innerText: 0 }, // Start from 0
         {
-          innerText: percentageofskill[index],
+          innerText: percentageofskill[index], // Animate to the final percentage
           duration: 1,
           ease: "none",
-          snap: { innerText: 1 }, // Ensure the text value rounds to nearest integer
+          snap: { innerText: 1 }, // Snap to nearest integer
           scrollTrigger: {
-            trigger: element,
+            trigger: percentageElement,
             start: "top bottom", // Start animation when the top of the element is at the bottom of the viewport
             end: "bottom top", // End animation when the bottom of the element is at the top of the viewport
             toggleActions: "play none none none", // Control actions on scroll events
-            // markers: true, // Optional: Add markers to debug
           },
         }
       );
@@ -142,77 +155,18 @@ const Home = () => {
       typed.destroy(); // Cleanup on unmount
     };
   });
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
 
-  const [formErrors, setFormErrors] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let errors = {};
-
-    if (!formData.name.trim()) {
-      errors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email is invalid";
-    }
-
-    if (!formData.message.trim()) {
-      errors.message = "Message is required";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
     const scriptURL =
       "https://script.google.com/macros/s/AKfycby8rKRJR0ALHqzPeSBp5TVdAV6SnDMsRAorxB8P9Fe3Jfryn6R5iVdO7802FKvpqN_U/exec";
 
-    try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        body: new URLSearchParams(formData),
-      });
-
-      if (response.ok) {
-        alert("Form submitted successfully!");
-        setFormData({ name: "", email: "", desc: "" });
-      } else {
-        alert("Form submission failed.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Form submission failed.");
-    }
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-    setFormErrors({
-      name: "",
-      email: "",
-      message: "",
-    });
+    fetch(scriptURL, { method: "POST", body: new FormData(formRef.current) })
+      .then((response) => {
+        alert("Thank you! your form is submitted successfully.");
+        window.location.reload();
+      })
+      .catch((error) => console.error("Error!", error.message));
   };
 
   return (
@@ -251,6 +205,7 @@ const Home = () => {
             <p>Hello, my name is</p>
             <h1>Salman Quadri</h1> I am <span id="element"></span>
           </div>
+
           <div className="social-media-icons">
             <button
               className="Btn1"
@@ -371,15 +326,12 @@ const Home = () => {
         </div>
       </div>
       <div className="page2 sm:space-y-5">
-        <h2 className="text-3xl font-medium text-gray-100">About Me</h2>
+        <h2 className="text-3xl font-medium text-gray-800">About Me</h2>
         <div className="flex flex-row sm:space-y-4 sm:flex-col about lg:flex-col lg:space-y-8 justify-evenly">
           <div className="right" data-aos="slide-right">
             <div className="img1" ref={img1Ref}></div>
           </div>
-          <div
-            className="text-gray-100 about-text sm:font-semibold"
-            data-aos="slide-left"
-          >
+          <div className="about-text sm:font-semibold" data-aos="slide-left">
             <p>
               Hi, Im Salman Quadri, a passionate web developer with a flair for
               crafting dynamic and engaging web applications. With a solid
@@ -395,86 +347,100 @@ const Home = () => {
               something amazing together!
             </p>
             <Link className="btn-link" to="/about">
-              <button className="text-gray-100 type1">More About Me</button>
+              <button className="type1">More About Me</button>
             </Link>
           </div>
         </div>
       </div>
       <div className="page3-home">
-        <h2 className="text-3xl font-medium text-center text-gray-100 sm:text-2xl">
+        <h2 className="text-3xl font-medium text-center text-gray-800 sm:text-2xl">
           My Skills
         </h2>
-        <div className="overflow-y-hidden skills-home sm:w-full">
+        <div className="overflow-y-visible skills-home sm:w-full">
           <div
             ref={skillsContainerRef}
-            className="grid grid-cols-1 px-10 pt-10 sm:px-2 sm:w-full skills-container"
+            className="grid grid-cols-4 gap-10 px-10 pt-10 sm:px-2 sm:w-full skills-container"
           >
             {lang_icon.map((langicon, index) => (
               <div
                 key={index}
-                className="skill-contain flex items-center mb-10 sm:w-full justify-between w-[50vw] skill pointer-events-none"
+                className="flex flex-col items-center p-5 transition-shadow duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-2xl skill-card hover:scale-105"
+                style={{
+                  width: "250px",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)", // Slightly translucent
+                }}
               >
-                <div className="absolute z-10 p-1 text-lg font-medium text-center text-white capitalize transition-all duration-300 border-2 border-transparent rounded-lg shadow-lg bg-gradient-to-r from-pink-500 to-red-500 -left-3 -top-11 hover:shadow-2xl hoverelement">
+                {/* Skill Image */}
+                <div className="relative w-full h-40 mb-4 overflow-visible rounded-lg">
+                  <img
+                    className="object-contain w-full h-full transition-transform duration-300"
+                    src={langicon}
+                    alt={`Skill ${index + 1}`}
+                  />
+                </div>
+
+                {/* Skill Title */}
+                <div className="mb-2 text-xl font-bold text-center text-gray-900">
                   {lang_names[index]}
                 </div>
 
-                <img
-                  className="object-contain object-center transition duration-300 ease-in-out skills-img sm:w-10 w-14 hover:scale-110"
-                  src={langicon}
-                  alt={`Skill ${index + 1}`}
-                />
-                <div className=" bg-zinc-900 rounded-lg flex items-start w-[100%] ml-10 mr-10">
+                {/* Progress Bar */}
+                <div className="w-full h-4 mb-3 overflow-hidden bg-gray-300 rounded-full">
                   <div
-                    data-progress={percentageofskill[index]}
-                    className="h-4 bg-green-600 rounded-lg progress-bar"
-                    style={{ width: "0%" }} // Ensure initial width is 0
+                    className="h-full transition-all duration-500 rounded-full bg-gradient-to-r from-green-400 to-green-600 progress-bar"
+                    data-progress={percentageofskill[index]} // Add data-progress attribute
+                    style={{ width: "0%" }} // Initialize width to 0% for animation
                   ></div>
                 </div>
-                <p className="font-serif font-semibold skill-percentage"></p>
+
+                {/* Skill Percentage */}
+                <p className="font-bold text-gray-600 text-m skill-percentage">
+                  {percentageofskill[index]}
+                </p>
               </div>
             ))}
           </div>
         </div>
         <Link className="btn-link" to="/skills">
-          <button className="text-gray-100 type1">More Skills...</button>
+          <button className="type1">More Skills...</button>
         </Link>
       </div>
       <div className="flex flex-col items-center justify-center w-full overflow-x-hidden page4-home">
-        <h2 className="text-3xl font-medium text-white">Contact me</h2>
+        <h2 className="text-3xl font-medium text-gray-800">Contact me</h2>
         <section className="flex flex-row w-full p-6 space-x-8 space-y-0 sm:space-y-5 sm:space-x-0 sm:flex-col max-w-7xl">
           {/* Left Side: Contact Information */}
           <div
             className="w-1/2 space-y-2 text-left sm:w-full "
             data-aos="fade-right"
           >
-            <p className="text-xl text-gray-100 font lg:text-xl">
+            <p className="text-xl text-gray-800 font lg:text-xl">
               Have a project in mind? Feel free to reach out to me.
             </p>
-            <p className="text-xl text-gray-100 lg:text-xl">
+            <p className="text-xl text-gray-800 lg:text-xl">
               I am always open to new opportunities and collaborations.
             </p>
-            <p className="text-xl text-gray-100 lg:text-xl">
+            <p className="text-xl text-gray-800 lg:text-xl">
               Lets create something amazing together!
             </p>
-            <p className="text-xl text-gray-100 lg:text-xl">
+            <p className="text-xl text-gray-800 lg:text-xl">
               You can also reach me at:
             </p>
-            <div className="flex items-center text-lg text-gray-100 ">
+            <div className="flex items-center text-lg ">
               Email:
               <a
                 href="mailto:secretofsk@gmail.com"
-                className="block ml-2 text-lg font-medium hover:underline"
+                className="block ml-2 text-lg font-medium text-blue-600 hover:underline"
               >
                 secretofsk@gmail.com
               </a>
             </div>
-            <div className="flex items-center text-lg text-gray-100 ">
+            <div className="flex items-center text-lg ">
               Mobille Number:
               <a
                 href="tel:+917062747786"
-                className="block ml-2 text-lg font-medium hover:underline"
+                className="block ml-2 text-lg font-medium text-blue-600 hover:underline"
               >
-                +91 7062747786
+                +91-7062747786
               </a>
             </div>
           </div>
@@ -488,14 +454,12 @@ const Home = () => {
                   name="name"
                   id="name"
                   placeholder=" "
-                  value={formData.name}
-                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
                 />
                 <label
                   htmlFor="name"
-                  className="absolute text-sm text-white transition-all duration-300 left-4 top-2"
+                  className="absolute text-sm text-gray-700 transition-all duration-300 left-4 top-2"
                 >
                   Name
                 </label>
@@ -505,15 +469,13 @@ const Home = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
                   placeholder=" "
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
                 />
                 <label
                   htmlFor="email"
-                  className="absolute text-sm text-white transition-all duration-300 left-4 top-2"
+                  className="absolute text-sm text-gray-700 transition-all duration-300 left-4 top-2"
                 >
                   Email
                 </label>
@@ -523,16 +485,13 @@ const Home = () => {
                   name="message"
                   id="message"
                   placeholder=" "
-                  value={formData.message}
-                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-2 transition-all duration-300 bg-transparent border-b-2 border-gray-300 rounded-lg focus:border-blue-600"
                   rows="4"
                 />
-
                 <label
                   htmlFor="message"
-                  className="absolute text-sm text-white transition-all duration-300 left-4 top-2"
+                  className="absolute text-sm text-gray-700 transition-all duration-300 left-4 top-2"
                 >
                   Message
                 </label>
@@ -544,6 +503,15 @@ const Home = () => {
           </div>
         </section>
       </div>
+      <footer>
+        <p className="copyright">
+          Made with{" "}
+          <span role="img" aria-label="heart">
+            ❤
+          </span>{" "}
+          by Salman Quadri.
+        </p>
+      </footer>
     </div>
   );
 };
