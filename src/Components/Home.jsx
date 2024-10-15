@@ -359,10 +359,10 @@ const Home = () => {
         <h2 className="text-3xl font-medium text-center text-gray-100 sm:text-2xl">
           My Skills
         </h2>
-        <div className="overflow-y-visible skills-home sm:w-full">
+        <div className="flex items-center justify-center overflow-y-visible align-middle skills-home sm:w-full">
           <div
             ref={skillsContainerRef}
-            className="grid grid-cols-4 gap-10 px-10 pt-10 sm:px-2 sm:w-full skills-container"
+            className="grid grid-cols-4 gap-10 px-10 pt-10 sm:px-2 w-fit sm:grid-cols-1 md:grid-cols-2 md:p-0 xl:grid-cols-3 skills-container"
           >
             {lang_icon.map((langicon, index) => (
               <div
@@ -443,7 +443,7 @@ const Home = () => {
                 href="tel:+917062747786"
                 className="block ml-2 text-lg font-medium text-red-300 underline hover:underline"
               >
-                +91-7062747786
+                +917062747786
               </a>
             </div>
           </div>
