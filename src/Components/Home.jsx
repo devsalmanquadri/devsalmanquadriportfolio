@@ -326,12 +326,15 @@ const Home = () => {
         </div>
       </div>
       <div className="page2 sm:space-y-5">
-        <h2 className="text-3xl font-medium text-gray-800">About Me</h2>
+        <h2 className="text-3xl font-medium text-gray-100">About Me</h2>
         <div className="flex flex-row sm:space-y-4 sm:flex-col about lg:flex-col lg:space-y-8 justify-evenly">
           <div className="right" data-aos="slide-right">
             <div className="img1" ref={img1Ref}></div>
           </div>
-          <div className="about-text sm:font-semibold" data-aos="slide-left">
+          <div
+            className="text-gray-100 about-text sm:font-semibold"
+            data-aos="slide-left"
+          >
             <p>
               Hi, Im Salman Quadri, a passionate web developer with a flair for
               crafting dynamic and engaging web applications. With a solid
@@ -353,7 +356,7 @@ const Home = () => {
         </div>
       </div>
       <div className="page3-home">
-        <h2 className="text-3xl font-medium text-center text-gray-800 sm:text-2xl">
+        <h2 className="text-3xl font-medium text-center text-gray-100 sm:text-2xl">
           My Skills
         </h2>
         <div className="overflow-y-visible skills-home sm:w-full">
@@ -406,39 +409,39 @@ const Home = () => {
         </Link>
       </div>
       <div className="flex flex-col items-center justify-center w-full overflow-x-hidden page4-home">
-        <h2 className="text-3xl font-medium text-gray-800">Contact me</h2>
+        <h2 className="text-3xl font-medium text-gray-100">Contact me</h2>
         <section className="flex flex-row w-full p-6 space-x-8 space-y-0 sm:space-y-5 sm:space-x-0 sm:flex-col max-w-7xl">
           {/* Left Side: Contact Information */}
           <div
             className="w-1/2 space-y-2 text-left sm:w-full "
             data-aos="fade-right"
           >
-            <p className="text-xl text-gray-800 font lg:text-xl">
+            <p className="text-xl text-gray-100 font lg:text-xl">
               Have a project in mind? Feel free to reach out to me.
             </p>
-            <p className="text-xl text-gray-800 lg:text-xl">
+            <p className="text-xl text-gray-100 lg:text-xl">
               I am always open to new opportunities and collaborations.
             </p>
-            <p className="text-xl text-gray-800 lg:text-xl">
+            <p className="text-xl text-gray-100 lg:text-xl">
               Lets create something amazing together!
             </p>
-            <p className="text-xl text-gray-800 lg:text-xl">
+            <p className="text-xl text-gray-100 lg:text-xl">
               You can also reach me at:
             </p>
-            <div className="flex items-center text-lg ">
+            <div className="flex items-center text-lg text-gray-100">
               Email:
               <a
                 href="mailto:secretofsk@gmail.com"
-                className="block ml-2 text-lg font-medium text-blue-600 hover:underline"
+                className="block ml-2 text-lg font-medium text-red-300 hover:underline"
               >
                 secretofsk@gmail.com
               </a>
             </div>
-            <div className="flex items-center text-lg ">
+            <div className="flex items-center text-lg text-gray-100">
               Mobille Number:
               <a
                 href="tel:+917062747786"
-                className="block ml-2 text-lg font-medium text-blue-600 hover:underline"
+                className="block ml-2 text-lg font-medium text-red-300 underline hover:underline"
               >
                 +91-7062747786
               </a>
@@ -503,15 +506,6 @@ const Home = () => {
           </div>
         </section>
       </div>
-      <footer>
-        <p className="copyright">
-          Made with{" "}
-          <span role="img" aria-label="heart">
-            ❤
-          </span>{" "}
-          by Salman Quadri.
-        </p>
-      </footer>
     </div>
   );
 };
